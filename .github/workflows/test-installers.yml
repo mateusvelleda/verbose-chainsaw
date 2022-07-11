@@ -1,0 +1,23 @@
+name: Testing installers
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    - uses: actions/checkout@v2
+
+    - name: Set permissions
+      run: chmod 755 install.sh
+    
+    - name: Run install script
+      run: ./install.sh
+    
+    - name: Check installation
+      run: |
+        yarn --version
+        nvm ls
+        git status

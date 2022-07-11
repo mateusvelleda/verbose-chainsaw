@@ -25,7 +25,7 @@ else
 fi
 
 # install wget
-if has_package "curl"; then
+if has_package "wget"; then
     echo "wget already available"
 else
     sudo apt install wget -y
@@ -46,7 +46,6 @@ rm -f ./google-chrome-stable_current_amd64.deb
 # JetBrains Mono font
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
-
 # install NVM
 echo "----------------"
 echo "-installing NVM-"
@@ -55,13 +54,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 # Install yarn
 # --no-install-recommends due to using NVM
-if [ unameOut = "Linux"]; then
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    sudo apt update && sudo apt install --no-install-recommends yarn
-elif [ unameOut = "Mac"]; then
-    curl -o- -L https://yarnpkg.com/install.sh | bash
-fi
+curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # Install GitHub CLI
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
@@ -70,12 +63,12 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githu
 sudo apt update
 sudo apt install gh -y
 # GH login (will add RSA keys and so on)
-gh auth login
+# gh auth login
 
 # ZSH + ohMyZsh
-sudo apt-get install zsh -y
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sudo apt-get install zsh -y
+# chsh -s $(which zsh)
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # VS Code
 sudo apt-get install wget gpg
@@ -95,8 +88,10 @@ sudo apt-get install -y -f
 rm -f slack.deb
 
 # Set git user
-echo "git config user"
-read -p "E-mail:" gituseremail
-git config --global user.email "$gituseremail"
-read -p "Name:" gitusername
-git config --global user.name "$gitusername"
+# echo "git config user"
+# read -p "E-mail:" gituseremail
+# git config --global user.email "$gituseremail"
+# read -p "Name:" gitusername
+# git config --global user.name "$gitusername"
+
+source ~/.zshrc
