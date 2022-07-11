@@ -41,7 +41,6 @@ fi
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get install -f -y
-google-chrome
 rm -f ./google-chrome-stable_current_amd64.deb
 
 # JetBrains Mono font
@@ -49,12 +48,10 @@ rm -f ./google-chrome-stable_current_amd64.deb
 
 
 # install NVM
-echo "installing NVM"
-if has_package "nvm"; then
-    echo "NVM already installed"
-else
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-fi
+echo "----------------"
+echo "-installing NVM-"
+echo "----------------"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 # Install yarn
 # --no-install-recommends due to using NVM
@@ -71,7 +68,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 sudo apt update
-sudo apt install gh
+sudo apt install gh -y
 # GH login (will add RSA keys and so on)
 gh auth login
 
@@ -84,7 +81,7 @@ git config --global user.name "$gitusername"
 
 
 # ZSH + ohMyZsh
-sudo apt-get install zsh
+sudo apt-get install zsh -y
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
