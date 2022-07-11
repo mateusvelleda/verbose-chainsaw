@@ -72,14 +72,6 @@ sudo apt install gh -y
 # GH login (will add RSA keys and so on)
 gh auth login
 
-# Set git user
-echo "git config user"
-read -p "E-mail:" gituseremail
-git config --global user.email "$gituseremail"
-read -p "Name:" gitusername
-git config --global user.name "$gitusername"
-
-
 # ZSH + ohMyZsh
 sudo apt-get install zsh -y
 chsh -s $(which zsh)
@@ -95,3 +87,16 @@ rm -f packages.microsoft.gpg
 sudo apt install apt-transport-https -y
 sudo apt update
 sudo apt install code -y
+
+# Slack
+wget https://downloads.slack-edge.com/releases/linux/4.21.1/prod/x64/slack-desktop-4.21.1-amd64.deb -O slack.deb
+sudo dpkg -i slack.deb
+sudo apt-get install -y -f
+rm -f slack.deb
+
+# Set git user
+echo "git config user"
+read -p "E-mail:" gituseremail
+git config --global user.email "$gituseremail"
+read -p "Name:" gitusername
+git config --global user.name "$gitusername"
