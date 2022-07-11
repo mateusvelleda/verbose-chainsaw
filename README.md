@@ -1,1 +1,4 @@
-# verbose-chainsaw
+# dotfiles
+
+### todo
+- [ ] differentiate linux distros
