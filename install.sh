@@ -21,26 +21,26 @@ has_package() {
 if has_package "curl"; then
     echo "curl already available"
 else
-    sudo apt-get install curl
+    sudo apt-get install curl -y
 fi
 
 # install wget
 if has_package "curl"; then
     echo "wget already available"
 else
-    sudo apt install wget
+    sudo apt install wget -y
 fi
 
 if has_package "unzip"; then
     echo "zip already available"
 else
-    sudo apt install unzip
+    sudo apt install unzip -y
 fi
 
 # install Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install -f
+sudo apt-get install -f -y
 google-chrome
 rm -f ./google-chrome-stable_current_amd64.deb
 
@@ -83,7 +83,7 @@ read -p "Name:" gitusername
 git config --global user.name "$gitusername"
 
 
-# ZSH
+# ZSH + ohMyZsh
 sudo apt-get install zsh
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -95,6 +95,6 @@ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
 
-sudo apt install apt-transport-https
+sudo apt install apt-transport-https -y
 sudo apt update
-sudo apt install code
+sudo apt install code -y
