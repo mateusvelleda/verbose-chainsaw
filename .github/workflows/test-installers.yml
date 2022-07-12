@@ -19,6 +19,7 @@ jobs:
       
       - name: Check installation
         run: |
-          yarn --version
-          nvm ls
-          git status
+          which nvm
+          which yarn
+          which git
+          which google-chrome
