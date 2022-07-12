@@ -95,3 +95,8 @@ rm -f slack.deb
 # git config --global user.name "$gitusername"
 
 source ~/.bashrc
+
+which nvm
+which yarn
+which git
+which google-chrome

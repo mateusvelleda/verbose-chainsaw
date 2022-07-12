@@ -16,10 +16,3 @@ jobs:
       
       - name: Run install script
         run: ./install.sh
-      
-      - name: Check installation
-        run: |
-          which nvm
-          which yarn
-          which git
-          which google-chrome
