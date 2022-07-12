@@ -94,4 +94,4 @@ rm -f slack.deb
 # read -p "Name:" gitusername
 # git config --global user.name "$gitusername"
 
-source ~/.zshrc
+source ~/.bashrc
